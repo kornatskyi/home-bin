@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mac_address="FC:58:FA:56:D4:64 "
+
+bluetoothctl remove $mac_address
+
+bluetoothctl scan on &
+PID=$!
+sleep 10
+kill $PID
+
+bluetoothctl pair $mac_address
+bluetoothctl connect $mac_address
+bluetoothctl trust $mac_address
