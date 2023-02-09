@@ -1,12 +1,14 @@
 #!/bin/bash
 
-mac_address="FC:58:FA:56:D4:64 "
+mac_address="AC:BF:71:0A:7A:9F"
+
 
 bluetoothctl remove $mac_address
+bluetoothctl untrust $mac_address
 
 bluetoothctl scan on &
 PID=$!
-sleep 10
+sleep 5
 kill $PID
 
 bluetoothctl pair $mac_address
